@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SynapseMark } from '../lib/brand';
-import { isSupabaseConfigured } from '../lib/supabase';
-import { AlertTriangle, Database } from 'lucide-react';
 
 interface ChromeProps {
   children: React.ReactNode;
@@ -23,20 +21,6 @@ export const Chrome: React.FC<ChromeProps> = ({
       <div className="fixed inset-0 dot-grid pointer-events-none opacity-40" />
       <div className="fixed inset-0 iso-grid pointer-events-none opacity-20" />
       <div className="noise-layer" />
-
-      {/* Supabase status warning if unconfigured */}
-      {!isSupabaseConfigured && (
-        <div className="bg-[#ff6a00]/15 border-b border-[#ff6a00]/40 px-4 py-2 text-xs font-['Manrope',sans-serif] text-[#ffd9bf] flex items-center justify-between z-50">
-          <div className="flex items-center gap-2 max-w-4xl mx-auto">
-            <AlertTriangle size={15} className="text-[#ff6a00] shrink-0" />
-            <span>
-              <strong>Supabase Setup Pending:</strong> Running in local offline mode. Add your Supabase URL & Anon Key to{' '}
-              <code className="text-[#00d6c8] bg-[#061424] px-1 py-0.5 rounded font-mono">.env</code> and run{' '}
-              <code className="text-[#00d6c8] bg-[#061424] px-1 py-0.5 rounded font-mono">supabase/schema.sql</code> in your dashboard.
-            </span>
-          </div>
-        </div>
-      )}
 
       {/* Top HUD Header */}
       {showNav && (
